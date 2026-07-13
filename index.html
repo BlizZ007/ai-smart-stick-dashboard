@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Smart Stick Dashboard</title>
+
+    <!-- Google Font -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Bootstrap -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+<!-- ===================================================== -->
+<!-- HEADER -->
+<!-- ===================================================== -->
+
+<header class="dashboard-header">
+
+    <div class="container">
+
+        <div class="header-content">
+
+            <div class="logo-section">
+
+                <div class="logo-circle">
+
+                    <i class="fa-solid fa-person-cane"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>
+
+                        AI Smart Stick Dashboard
+
+                    </h2>
+
+                    <p>
+
+                        Real-Time Monitoring System
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="status-section">
+
+                <div class="online-indicator">
+
+                    <span id="onlineDot"></span>
+
+                    <span id="onlineStatus">
+
+                        ONLINE
+
+                    </span>
+
+                </div>
+
+                <small>
+
+                    Last Updated :
+                    <span id="lastUpdated">
+
+                        --
+
+                    </span>
+
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+<!-- ===================================================== -->
+<!-- MAIN CONTENT -->
+<!-- ===================================================== -->
+
+<div class="container mt-4">
+
+<!-- ===================================================== -->
+<!-- FIRST ROW -->
+<!-- ===================================================== -->
+
+<div class="row g-4">
+
+<!-- ================= Battery ================= -->
+
+<div class="col-lg-4">
+
+<div class="dashboard-card">
+
+<div class="card-title">
+
+<i class="fa-solid fa-battery-three-quarters"></i>
+
+Battery Status
+
+</div>
+
+<h1 id="batteryPercentage">
+
+--
+
+</h1>
+
+<p id="batteryHealth">
+
+Healthy
+
+</p>
+
+<p>
+
+Voltage :
+<span id="batteryVoltage">
+
+--
+
+</span>
+
+V
+
+</p>
+
+<div class="progress">
+
+<div class="progress-bar"
+
+id="batteryBar"
+
+style="width:0%;">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= Fall ================= -->
+
+<div class="col-lg-4">
+
+<div class="dashboard-card">
+
+<div class="card-title">
+
+<i class="fa-solid fa-person-falling"></i>
+
+Fall Detection
+
+</div>
+
+<div class="status-icon">
+
+<i class="fa-solid fa-shield-heart"></i>
+
+</div>
+
+<h3 id="fallStatus">
+
+No Fall Detected
+
+</h3>
+
+<p>
+
+    <strong>Last Activated:</strong>
+
+    <span id="fallLastActivated">
+
+        Never
+
+    </span>
+
+</p>
+
+</div>
+
+</div>
+
+<!-- ================= Walking ================= -->
+
+<div class="col-lg-4">
+
+<div class="dashboard-card">
+
+<div class="card-title">
+
+<i class="fa-solid fa-person-walking"></i>
+
+Walking Status
+
+</div>
+
+<div class="status-icon">
+
+<i class="fa-solid fa-shoe-prints"></i>
+
+</div>
+
+<h3 id="walkingStatus">
+
+Standing
+
+</h3>
+
+<p>
+
+Since
+
+<span id="walkingSince">
+
+--
+
+</span>
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- SECOND ROW -->
+<!-- ===================================================== -->
+
+<div class="row g-4 mt-2">
+
+<!-- ================= SOS ================= -->
+
+<div class="col-lg-4">
+
+<div class="dashboard-card">
+
+<div class="card-title">
+
+<i class="fa-solid fa-triangle-exclamation"></i>
+
+SOS Status
+
+</div>
+
+<div class="status-icon">
+
+<i class="fa-solid fa-bell"></i>
+
+</div>
+
+<h3 id="sosStatus">
+
+Not Activated
+
+</h3>
+
+<p>
+
+    <strong>Last Activated:</strong>
+
+    <span id="sosLastActivated">
+
+        Never
+
+    </span>
+
+</p>
+
+</div>
+
+</div>
+
+<!-- ================= Emergency ================= -->
+
+<div class="col-lg-4">
+
+<div class="dashboard-card">
+
+<div class="card-title">
+
+<i class="fa-solid fa-location-dot"></i>
+
+Emergency
+
+</div>
+
+<p>
+
+<strong>Type :</strong>
+
+<span id="emergencyType">
+
+--
+
+</span>
+
+</p>
+
+<p>
+
+<strong>Time :</strong>
+
+<span id="emergencyTime">
+
+--
+
+</span>
+
+</p>
+
+<p>
+
+<strong>Latitude :</strong>
+
+<span id="emergencyLatitude">
+
+--
+
+</span>
+
+</p>
+
+<p>
+
+<strong>Longitude :</strong>
+
+<span id="emergencyLongitude">
+
+--
+
+</span>
+
+</p>
+
+<a
+
+    id="mapButton"
+
+    class="btn btn-primary w-100"
+
+    href="#"
+
+    target="_blank"
+
+>
+
+    <i class="fa-solid fa-map-location-dot"></i>
+
+    View on Google Maps
+
+</a>
+
+</div>
+
+</div>
+
+<!-- ================= History ================= -->
+
+<div class="col-lg-4">
+
+<div class="dashboard-card">
+
+<div class="card-title">
+
+<i class="fa-solid fa-clock-rotate-left"></i>
+
+Recent Alerts
+
+</div>
+
+<div id="historyContainer">
+
+<p>
+
+No alerts yet.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- AI DESCRIPTION -->
+<!-- ===================================================== -->
+
+<div class="row mt-4">
+
+    <div class="col-12">
+
+        <div class="dashboard-card ai-card">
+
+            <div class="card-title">
+
+                <i class="fa-solid fa-robot"></i>
+
+                AI Scene Description
+
+            </div>
+
+            <div class="ai-description">
+
+                <p id="sceneDescription">
+
+                    No AI scan available.
+
+                    Press the AI button on the Smart Stick to analyze the surroundings.
+
+                </p>
+
+            </div>
+
+            <div class="ai-time">
+
+                <i class="fa-regular fa-clock"></i>
+
+                Last Scan :
+
+                <span id="sceneTime">
+
+                    --
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- ===================================================== -->
+<!-- AI IMAGE -->
+<!-- ===================================================== -->
+
+<div class="row mt-4">
+
+    <div class="col-12">
+
+        <div class="dashboard-card image-card">
+
+            <div class="card-title">
+
+                <i class="fa-solid fa-camera"></i>
+
+                Latest AI Image
+
+            </div>
+
+            <div class="image-container">
+
+                <!-- Placeholder -->
+
+                <div id="imagePlaceholder">
+
+                    <i class="fa-solid fa-camera"></i>
+
+                    <p>No Image Available</p>
+
+                    <small>
+
+                        Waiting for AI Scan...
+
+                    </small>
+
+                </div>
+
+                <!-- Actual Image -->
+
+                <img
+
+                    id="sceneImage"
+
+                    src=""
+
+                    alt="Latest AI Image"
+
+                    style="display:none;"
+
+                >
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- FOOTER -->
+<!-- ===================================================== -->
+
+<footer class="footer mt-5">
+
+    <div class="container">
+
+        <div class="footer-content">
+
+            <p>
+
+                <strong>AI Smart Stick</strong>
+
+                | Version 1.0
+
+            </p>
+
+            <p>
+
+                Developed By
+
+                <strong>
+
+                    SK AQIB SOHEL
+
+                </strong>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- BOOTSTRAP -->
+<!-- ===================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- ===================================================== -->
+<!-- FIREBASE -->
+<!-- ===================================================== -->
+
+<script type="module" src="firebase.js"></script>
+
+<script type="module" src="script.js"></script>
+
+</body>
+
+</html>

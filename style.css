@@ -1,0 +1,926 @@
+/* ==========================================================
+   GOOGLE FONT
+========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+/* ==========================================================
+   GLOBAL
+========================================================== */
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+    font-family:'Poppins',sans-serif;
+
+}
+
+body{
+
+    background:#F4F7FC;
+
+    color:#1F2937;
+
+}
+
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.dashboard-header{
+
+    background:linear-gradient(135deg,#0F2C5A,#17468C);
+
+    color:white;
+
+    padding:16px 0;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:999;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.15);
+
+}
+
+.header-content{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+}
+
+.logo-section{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.logo-circle{
+
+    width:70px;
+
+    height:70px;
+
+    background:white;
+
+    color:#17468C;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:32px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.25);
+
+}
+
+.logo-section h2{
+
+    margin:0;
+
+    font-size:30px;
+
+    font-weight:700;
+
+}
+
+.logo-section p{
+
+    margin:2px 0 0;
+
+    opacity:.9;
+
+    font-size:15px;
+
+}
+
+
+/* ==========================================================
+   ONLINE STATUS
+========================================================== */
+
+.status-section{
+
+    text-align:right;
+
+}
+
+.online-indicator{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:flex-end;
+
+    gap:10px;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+}
+
+#onlineDot{
+
+    width:14px;
+
+    height:14px;
+
+    background:#10B981;
+
+    border-radius:50%;
+
+    animation:pulse 1.4s infinite;
+
+    box-shadow:0 0 10px #10B981;
+
+}
+
+.status-section small{
+
+    opacity:.9;
+
+    font-size:14px;
+
+}
+
+
+/* ==========================================================
+   CARDS
+========================================================== */
+
+.dashboard-card{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:25px;
+
+    height:330px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    box-shadow:
+
+        0 10px 30px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+.dashboard-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:
+
+        0 18px 40px rgba(0,0,0,.15);
+
+}
+
+.card-title{
+
+    font-size:18px;
+
+    font-weight:600;
+
+    margin-bottom:20px;
+
+    color:#17468C;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.card-title i{
+
+    width:28px;
+
+    text-align:center;
+
+    font-size:22px;
+
+}
+
+
+/* ==========================================================
+   STATUS ICONS
+========================================================== */
+
+.status-icon{
+
+    width:80px;
+
+    height:80px;
+
+    background:#EEF4FF;
+
+    border-radius:50%;
+
+    margin:10px auto;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.status-icon i{
+
+    font-size:34px;
+
+    color:#17468C;
+
+}
+
+
+/* ==========================================================
+   BATTERY
+========================================================== */
+
+#batteryPercentage{
+
+    font-size:60px;
+
+    font-weight:700;
+
+    color:#17468C;
+
+    text-align:center;
+
+    margin-bottom:5px;
+
+}
+
+#batteryVoltage{
+
+    font-weight:600;
+
+}
+
+.progress{
+
+    height:16px;
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+    background:#E6ECF7;
+
+    margin-top:18px;
+
+}
+
+.progress-bar{
+
+    border-radius:50px;
+
+    transition:width .8s ease;
+
+    background:linear-gradient(
+        90deg,
+        #1E90FF,
+        #4DA6FF
+    );
+
+}
+
+#batteryHealth{
+
+    color:#16A34A;
+
+    font-weight:600;
+
+    font-size:18px;
+
+    margin-top:-10px;
+
+    margin-bottom:10px;
+
+    text-align:center;
+
+}
+
+
+/* ==========================================================
+   WALKING / FALL / SOS
+========================================================== */
+
+#walkingStatus,
+
+#fallStatus,
+
+#sosStatus{
+
+    text-align:center;
+
+    text-transform:uppercase;
+
+    font-size:30px;
+
+    font-weight:700;
+
+    margin-top:10px;
+
+}
+
+.dashboard-card p{
+
+    text-align:center;
+
+    color:#6B7280;
+
+    margin-top:8px;
+
+    font-size:15px;
+
+}
+
+#fallLastActivated,
+#sosLastActivated{
+
+    font-weight:600;
+
+    color:#374151;
+
+}
+
+.dashboard-card p{
+
+    margin-top:12px;
+
+    margin-bottom:0;
+
+}
+
+/* ==========================================================
+   EMERGENCY
+========================================================== */
+
+#emergencyType{
+
+    color:#DC2626;
+
+    font-weight:600;
+
+}
+
+.dashboard-card button{
+
+    margin-top:20px;
+
+    border-radius:12px;
+
+    padding:12px;
+
+    font-weight:600;
+
+}
+
+.dashboard-card .btn{
+
+    margin-top:auto;
+
+}
+
+
+/* ==========================================================
+   HISTORY
+========================================================== */
+
+#historyContainer{
+
+    max-height:170px;
+
+    overflow-y:auto;
+
+    padding-right:5px;
+
+}
+
+#historyContainer p{
+
+    text-align:left;
+
+    margin-bottom:12px;
+
+}
+
+#historyContainer::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+#historyContainer::-webkit-scrollbar-thumb{
+
+    background:#C9D4E8;
+
+    border-radius:20px;
+
+}
+
+/* ==========================================================
+   AI DESCRIPTION CARD
+========================================================== */
+
+.ai-card{
+
+    height:260px;
+
+}
+
+.ai-description{
+
+    background:#F8FAFC;
+
+    border-left:6px solid #2563EB;
+
+    border-radius:15px;
+
+    padding:20px;
+
+    min-height:120px;
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+#sceneDescription{
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    color:#374151;
+
+    text-align:left;
+
+    margin:0;
+
+}
+
+.ai-time{
+
+    margin-top:20px;
+
+    color:#6B7280;
+
+    font-size:15px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+
+/* ==========================================================
+   AI IMAGE
+========================================================== */
+
+.image-card{
+
+    min-height:420px;
+
+}
+
+.image-container{
+
+    width:100%;
+
+    height:330px;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    background:#EDF2F7;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+#sceneImage{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:none;
+
+    border-radius:18px;
+
+    animation:fadeImage .8s ease;
+
+    transition:opacity .5s ease;
+
+}
+
+#imagePlaceholder{
+
+    width:100%;
+
+    height:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#94A3B8;
+
+    text-align:center;
+
+}
+
+#imagePlaceholder i{
+
+    font-size:70px;
+
+    margin-bottom:20px;
+
+}
+
+#imagePlaceholder p{
+
+    font-size:22px;
+
+    font-weight:600;
+
+}
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+.footer{
+
+    margin-top:50px;
+
+    background:#0F2C5A;
+
+    color:white;
+
+    border-radius:20px 20px 0 0;
+
+    padding:25px;
+
+}
+
+.footer-content{
+
+    text-align:center;
+
+}
+
+.footer p{
+
+    margin:4px;
+
+    color:white;
+
+}
+
+
+/* ==========================================================
+   CARD COLORS
+========================================================== */
+
+.safe{
+
+    color:#10B981 !important;
+
+}
+
+.warning{
+
+    color:#F59E0B !important;
+
+}
+
+.danger{
+
+    color:#EF4444 !important;
+
+}
+
+.online{
+
+    color:#10B981;
+
+}
+
+.offline{
+
+    color:#EF4444;
+
+}
+
+
+/* ==========================================================
+   ALERT ITEM
+========================================================== */
+
+.alert-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:#F8FAFC;
+
+    border-radius:12px;
+
+    padding:12px 15px;
+
+    margin-bottom:10px;
+
+    transition:.3s;
+
+}
+
+.alert-item:hover{
+
+    background:#EEF4FF;
+
+}
+
+.alert-tag{
+
+    padding:5px 10px;
+
+    border-radius:8px;
+
+    color:white;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+.alert-fall{
+
+    background:#EF4444;
+
+}
+
+.alert-sos{
+
+    background:#2563EB;
+
+}
+
+.alert-battery{
+
+    background:#F59E0B;
+
+}
+
+.alert-ai{
+
+    background:#8B5CF6;
+
+}
+
+
+/* ==========================================================
+   BUTTON
+========================================================== */
+
+.btn-primary{
+
+    background:#2563EB;
+
+    border:none;
+
+    transition:.3s;
+
+}
+
+.btn-primary:hover{
+
+    background:#002064;
+
+    transform:translateY(-2px);
+
+}
+
+
+/* ==========================================================
+   ANIMATIONS
+========================================================== */
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+    50%{
+
+        transform:scale(1.3);
+
+        opacity:.6;
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes fadeImage{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.dashboard-card{
+
+    animation:fadeUp .6s ease;
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width:992px){
+
+    .header-content{
+
+        flex-direction:column;
+
+        gap:20px;
+
+        text-align:center;
+
+    }
+
+    .status-section{
+
+        text-align:center;
+
+    }
+
+    .online-indicator{
+
+        justify-content:center;
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    .logo-circle{
+
+        width:60px;
+
+        height:60px;
+
+        font-size:26px;
+
+    }
+
+    .logo-section h2{
+
+        font-size:24px;
+
+    }
+
+    #batteryPercentage{
+
+        font-size:46px;
+
+    }
+
+    #walkingStatus,
+
+    #fallStatus,
+
+    #sosStatus{
+
+        font-size:24px;
+
+    }
+
+    .image-container{
+
+        height:300px;
+
+    }
+
+}
+
+@media (max-width:576px){
+
+    .dashboard-card{
+
+        padding:20px;
+
+    }
+
+    .image-container{
+
+        height:230px;
+
+    }
+
+}
