@@ -304,6 +304,57 @@ function formatTimestamp(timestamp) {
 
 
 // ==========================================================
+// ELAPSED TIME
+// ==========================================================
+
+function timeSince(timestamp){
+
+    if(!timestamp || timestamp==="--") return "--";
+
+    try{
+
+        const parts = timestamp.split(" ");
+
+        const d = parts[0].split("-");
+
+        const t = parts[1].split(":");
+
+        const start = new Date(
+
+            Number(d[2]),
+
+            Number(d[1])-1,
+
+            Number(d[0]),
+
+            Number(t[0]),
+
+            Number(t[1]),
+
+            Number(t[2])
+
+        );
+
+        const diff = Math.floor((new Date()-start)/1000);
+
+        const min = Math.floor(diff/60);
+
+        const sec = diff%60;
+
+        return `${min} min ${sec} sec`;
+
+    }
+
+    catch{
+
+        return "--";
+
+    }
+
+}
+
+
+// ==========================================================
 // ONLINE
 // ==========================================================
 
@@ -318,6 +369,14 @@ function setOnline() {
     onlineDot.style.boxShadow =
 
         "0 0 10px #10B981";
+
+    if(latestHeartbeat){
+
+    lastUpdated.textContent =
+
+        timeSince(latestHeartbeat);
+
+    }
 
 }
 
@@ -337,6 +396,8 @@ function setOffline() {
     onlineDot.style.boxShadow =
 
         "0 0 10px #DC2626";
+
+    lastUpdated.textContent="--";
 
 }
 
@@ -579,9 +640,10 @@ onValue(
 
             walkingSince,
 
-            since
+            timeSince(since)
 
         );
+
 
         // Walking Color
 
@@ -1280,6 +1342,22 @@ setInterval(() => {
 
     }
 
+    if (walkingStart) {
+
+        walkingSince.textContent =
+
+            timeSince(walkingStart);
+
+    }
+
+    if (latestHeartbeat && onlineStatus.textContent === "ONLINE") {
+
+        lastUpdated.textContent =
+
+            timeSince(latestHeartbeat);
+
+    }
+
 }, 1000);
 
 
@@ -1293,26 +1371,65 @@ sceneImage.addEventListener(
 
     () => {
 
-        if (
+        if (sceneImage.src === "") return;
 
-            sceneImage.src !== ""
+        const newTab = window.open("", "_blank");
 
-        ) {
+        newTab.document.write(`
 
-            window.open(
+            <!DOCTYPE html>
 
-                sceneImage.src,
+            <html>
 
-                "_blank"
+            <head>
 
-            );
+                <title>AI Scene Image</title>
 
-        }
+                <style>
+
+                    body{
+
+                        margin:0;
+
+                        background:#111;
+
+                        display:flex;
+
+                        justify-content:center;
+
+                        align-items:center;
+
+                        height:100vh;
+
+                    }
+
+                    img{
+
+                        max-width:100%;
+
+                        max-height:100%;
+
+                    }
+
+                </style>
+
+            </head>
+
+            <body>
+
+                <img src="${sceneImage.src}">
+
+            </body>
+
+            </html>
+
+        `);
+
+        newTab.document.close();
 
     }
 
 );
-
 
 // ==========================================================
 // DASHBOARD STARTUP
