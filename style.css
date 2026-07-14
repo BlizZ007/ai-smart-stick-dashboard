@@ -540,6 +540,8 @@ body{
 
 .image-card{
 
+    height: auto;
+
     min-height:420px;
 
 }
@@ -561,6 +563,16 @@ body{
     justify-content:center;
 
     align-items:center;
+
+}
+
+@media (max-width:768px){
+
+    .image-container{
+
+        height:auto;
+
+    }
 
 }
 
