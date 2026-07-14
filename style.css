@@ -467,7 +467,9 @@ body{
 
 .ai-card{
 
-    height:260px;
+    min-height:260px;
+
+    height:auto;
 
 }
 
@@ -477,15 +479,27 @@ body{
 
     border-left:6px solid #2563EB;
 
-    border-radius:15px;
+    border-radius:18px;
 
     padding:20px;
 
     min-height:120px;
 
-    display:flex;
+    height: auto;
 
-    align-items:center;
+    overflow-wrap: break-word;
+
+    word-break: break-word;
+
+}
+
+.ai-description p{
+
+    margin:0;
+
+    line-height:1.8;
+
+    text-align:left;
 
 }
 
