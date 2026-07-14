@@ -402,6 +402,8 @@ function setOffline() {
 
     onlineSince = null;
 
+    walkingSince.textContent = "--";
+
 }
 
 
