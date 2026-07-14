@@ -193,6 +193,8 @@ document.getElementById(
 
 let latestHeartbeat = null;
 
+let onlineSince = null;
+
 let walkingStart = null;
 
 let lastBattery = 0;
@@ -370,16 +372,15 @@ function setOnline() {
 
         "0 0 10px #10B981";
 
-    if(latestHeartbeat){
+    if (onlineSince) {
 
-    lastUpdated.textContent =
+        lastUpdated.textContent =
 
-        timeSince(latestHeartbeat);
+            timeSince(onlineSince);
 
     }
 
 }
-
 
 // ==========================================================
 // OFFLINE
@@ -397,7 +398,9 @@ function setOffline() {
 
         "0 0 10px #DC2626";
 
-    lastUpdated.textContent="--";
+    lastUpdated.textContent = "--";
+
+    onlineSince = null;
 
 }
 
@@ -555,13 +558,11 @@ onValue(
 
         latestHeartbeat = lastUpdate;
 
-        setText(
+        if (online && onlineSince === null) {
 
-            lastUpdated,
+            onlineSince = lastUpdate;
 
-            lastUpdate
-
-        );
+        }
 
         if (online) {
 
@@ -1342,7 +1343,13 @@ setInterval(() => {
 
     }
 
-    if (walkingStart) {
+    if (
+
+        walkingStart &&
+
+        onlineStatus.textContent === "ONLINE"
+
+    ) {
 
         walkingSince.textContent =
 
@@ -1350,11 +1357,17 @@ setInterval(() => {
 
     }
 
-    if (latestHeartbeat && onlineStatus.textContent === "ONLINE") {
+    if (
+
+        onlineSince &&
+
+        onlineStatus.textContent === "ONLINE"
+
+    ) {
 
         lastUpdated.textContent =
 
-            timeSince(latestHeartbeat);
+            timeSince(onlineSince);
 
     }
 
