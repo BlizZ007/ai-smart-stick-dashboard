@@ -1277,8 +1277,6 @@ setInterval(() => {
 
     if (!latestHeartbeat) {
 
-        setOffline();
-
         return;
 
     }
@@ -1319,7 +1317,7 @@ setInterval(() => {
 
             (now - heartbeat) / 1000;
 
-        if (diff > 30) {
+        if (diff > 45) {
 
             setOffline();
 
