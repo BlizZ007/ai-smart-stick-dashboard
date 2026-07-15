@@ -568,6 +568,12 @@ body{
 
 @media (max-width:768px){
 
+    .image-card{
+
+        min-height:auto;
+
+    }
+
     .image-container{
 
         height:auto;
